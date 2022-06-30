@@ -9,6 +9,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import App from './views/App';
+import router from './router';
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17,5 +20,6 @@ import App from './views/App';
 
 const app = new Vue({
     el: '#root',
-    render: h => h(App)
+    render: h => h(App),
+    router
 });
