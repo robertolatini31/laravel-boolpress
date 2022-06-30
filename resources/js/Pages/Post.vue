@@ -1,6 +1,5 @@
 <template>
 <div>
-    <h1>{{$route.params.slug}}</h1>
      <div class="container" v-if="!loading">
             <h1>{{post.title}}</h1>
             <div class="d-flex gap-3">
@@ -20,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 
 export default {
     name: 'Post',

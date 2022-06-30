@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Posts Page</h1>
-
+        <h1>Posts:</h1>
         <div class="container-fluid">
          <div class="row">
             <main class="col-12 col-md-9 col-lg-10">
@@ -25,7 +24,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            <router-link :to="{name: 'post',params: {slug: post.slug}}" class="btn btn-primary btn-lg">Apri</router-link>
+                            <router-link :to="{name: 'post', params: { 'slug' : post.slug} }" class="btn btn-primary btn-lg">Apri</router-link>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
             </aside>
          </div>
        </div>
-         <router-view></router-view>
+         
     </div>
     
 </template>
