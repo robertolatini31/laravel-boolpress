@@ -25,6 +25,7 @@
                                         </li>
                                     </ul>
                                 </div>
+                            <router-link :to="{name: 'post',params: {slug: post.slug}}" class="btn btn-primary btn-lg">Apri</router-link>
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
             </aside>
          </div>
        </div>
-
+         <router-view></router-view>
     </div>
     
 </template>

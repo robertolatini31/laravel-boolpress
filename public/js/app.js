@@ -1912,6 +1912,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'About'
 });
@@ -1931,8 +1942,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Home'
+  name: 'Home',
+  data: function data() {
+    return {
+      posts: '',
+      loading: true
+    };
+  },
+  methods: {
+    getAllPosts: function getAllPosts() {
+      var _this = this;
+
+      axios.get('/api/posts').then(function (response) {
+        var posts = response.data.data;
+        _this.posts = posts.slice(0, 4);
+        _this.loading = false;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getAllPosts();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Post.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Post.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Post',
+  data: function data() {
+    return {
+      post: '',
+      loading: true
+    };
+  },
+  methods: {
+    getPost: function getPost() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/posts/' + this.$route.params.slug).then(function (response) {
+        _this.post = response.data;
+        _this.loading = false;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPost();
+  }
 });
 
 /***/ }),
@@ -1946,6 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37735,7 +37858,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("About me")])
+  return _c("div", { staticClass: "page py-4" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("About Me")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "lead" }, [
+        _vm._v(
+          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, consequatur!"
+        ),
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "my-3" }),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticClass: "lead" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { to: { name: "posts" }, role: "button" },
+            },
+            [_vm._v("\n                Leggi il mio Blog\n            ")]
+          ),
+        ],
+        1
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37759,7 +37910,141 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("HomePage")])
+  return _c("div", { staticClass: "page" }, [
+    _c("div", { staticClass: "p-5 bg-dark text-white" }, [
+      _c("h1", [_vm._v("Boolpress Blog")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "lead" }, [
+        _vm._v(
+          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, consequatur!"
+        ),
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "my-3" }),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticClass: "lead" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary btn-lg",
+              attrs: { to: { name: "posts" }, role: "button" },
+            },
+            [
+              _vm._v(
+                "\n                    Leggi il mio Blog\n                "
+              ),
+            ]
+          ),
+        ],
+        1
+      ),
+    ]),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "recent_posts py-4" }, [
+            _c("h3", [_vm._v("Posts recenti:")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.posts, function (post) {
+                return _c("div", { key: post.id, staticClass: "col" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: "/storage/" + post.img, alt: post.title },
+                    }),
+                    _vm._v(" "),
+                    post.content
+                      ? _c("div", { staticClass: "card-body" }, [
+                          _c("p", [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(post.content.slice(0, 100) + "...") +
+                                "\n                            "
+                            ),
+                          ]),
+                        ])
+                      : _vm._e(),
+                  ]),
+                ])
+              }),
+              0
+            ),
+          ]),
+        ])
+      : _vm._e(),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Post.vue?vue&type=template&id=9704806e&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/Post.vue?vue&type=template&id=9704806e& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v(_vm._s(_vm.$route.params.slug))]),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c("div", { staticClass: "container" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex gap-3" }, [
+            _c("img", {
+              attrs: { src: "/storage/" + _vm.post.img, alt: _vm.post.title },
+            }),
+            _vm._v(" "),
+            _vm.post.content
+              ? _c("p", { staticClass: "lead" }, [
+                  _vm._v(_vm._s(_vm.post.content)),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          _c("hr", { staticClass: "my-3" }),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "lead" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: { to: { name: "posts" }, role: "button" },
+                },
+                [
+                  _vm._v(
+                    "\n                    Torna al mio Blog\n                "
+                  ),
+                ]
+              ),
+            ],
+            1
+          ),
+        ])
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37783,207 +38068,244 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Posts Page")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("main", { staticClass: "col-12 col-md-9 col-lg-10" }, [
-          _c("section", { staticClass: "posts py-5" }, [
-            _c("div", { staticClass: "container" }, [
-              _c(
-                "div",
-                { staticClass: "row row-cols-1 row-cols-sm-2 row-cols-md-3" },
-                _vm._l(_vm.postsResponse.data, function (post) {
-                  return _c("div", { key: post.id, staticClass: "col p-3" }, [
-                    _c("div", { staticClass: "product card" }, [
-                      _c("img", {
-                        attrs: { src: "storage/" + post.img, alt: post.title },
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Posts Page")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("main", { staticClass: "col-12 col-md-9 col-lg-10" }, [
+            _c("section", { staticClass: "posts py-5" }, [
+              _c("div", { staticClass: "container" }, [
+                _c(
+                  "div",
+                  { staticClass: "row row-cols-1 row-cols-sm-2 row-cols-md-3" },
+                  _vm._l(_vm.postsResponse.data, function (post) {
+                    return _c("div", { key: post.id, staticClass: "col p-3" }, [
+                      _c("div", { staticClass: "product card" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "storage/" + post.img,
+                            alt: post.title,
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("h3", [_vm._v(_vm._s(post.title))]),
+                          _vm._v(" "),
+                          post.content
+                            ? _c("p", [
+                                _vm._v(_vm._s(_vm.trimText(post.content))),
+                              ])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-footer" },
+                          [
+                            post.category
+                              ? _c("span", [
+                                  _c("strong", [_vm._v("Categoria: ")]),
+                                  _vm._v(_vm._s(post.category.name)),
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            post.tags.length > 0
+                              ? _c("div", { staticClass: "tags" }, [
+                                  _c(
+                                    "ul",
+                                    [
+                                      _c("strong", [_vm._v("Tags:")]),
+                                      _vm._v(" "),
+                                      _vm._l(post.tags, function (tag) {
+                                        return _c("li", { key: tag.id }, [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(tag.name) +
+                                              "\n                                    "
+                                          ),
+                                        ])
+                                      }),
+                                    ],
+                                    2
+                                  ),
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "btn btn-primary btn-lg",
+                                attrs: {
+                                  to: {
+                                    name: "post",
+                                    params: { slug: post.slug },
+                                  },
+                                },
+                              },
+                              [_vm._v("Apri")]
+                            ),
+                          ],
+                          1
+                        ),
+                      ]),
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+                  _c(
+                    "ul",
+                    { staticClass: "pagination justify-content-center" },
+                    [
+                      _vm.postsResponse.current_page > 1
+                        ? _c("li", { staticClass: "page-item" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#", "aria-label": "Previous" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.getAllPosts(
+                                      _vm.postsResponse.current_page - 1
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { attrs: { "aria-hidden": "true" } },
+                                  [_vm._v("«")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "visually-hidden" }, [
+                                  _vm._v("Previous"),
+                                ]),
+                              ]
+                            ),
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.postsResponse.last_page, function (page) {
+                        return _c(
+                          "li",
+                          {
+                            key: page,
+                            staticClass:
+                              "{ 'page-item' : true, 'active' : page == postsResponse.current_page }",
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.getAllPosts(page)
+                                  },
+                                },
+                              },
+                              [_vm._v(_vm._s(page))]
+                            ),
+                          ]
+                        )
                       }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h3", [_vm._v(_vm._s(post.title))]),
-                        _vm._v(" "),
-                        post.content
-                          ? _c("p", [
-                              _vm._v(_vm._s(_vm.trimText(post.content))),
-                            ])
-                          : _vm._e(),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        post.category
-                          ? _c("span", [
-                              _c("strong", [_vm._v("Categoria: ")]),
-                              _vm._v(_vm._s(post.category.name)),
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        post.tags.length > 0
-                          ? _c("div", { staticClass: "tags" }, [
-                              _c(
-                                "ul",
-                                [
-                                  _c("strong", [_vm._v("Tags:")]),
-                                  _vm._v(" "),
-                                  _vm._l(post.tags, function (tag) {
-                                    return _c("li", { key: tag.id }, [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(tag.name) +
-                                          "\n                                    "
-                                      ),
-                                    ])
-                                  }),
-                                ],
-                                2
-                              ),
-                            ])
-                          : _vm._e(),
-                      ]),
-                    ]),
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
-                _c(
-                  "ul",
-                  { staticClass: "pagination justify-content-center" },
-                  [
-                    _vm.postsResponse.current_page > 1
-                      ? _c("li", { staticClass: "page-item" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "page-link",
-                              attrs: { href: "#", "aria-label": "Previous" },
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.getAllPosts(
-                                    _vm.postsResponse.current_page - 1
-                                  )
+                      _vm.postsResponse.current_page <
+                      _vm.postsResponse.last_page
+                        ? _c("li", { staticClass: "page-item" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#", "aria-label": "Next" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.getAllPosts(
+                                      _vm.postsResponse.current_page + 1
+                                    )
+                                  },
                                 },
                               },
-                            },
-                            [
-                              _c("span", { attrs: { "aria-hidden": "true" } }, [
-                                _vm._v("«"),
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "visually-hidden" }, [
-                                _vm._v("Previous"),
-                              ]),
-                            ]
-                          ),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm._l(_vm.postsResponse.last_page, function (page) {
-                      return _c(
-                        "li",
-                        {
-                          key: page,
-                          staticClass:
-                            "{ 'page-item' : true, 'active' : page == postsResponse.current_page }",
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "page-link",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.getAllPosts(page)
-                                },
-                              },
-                            },
-                            [_vm._v(_vm._s(page))]
-                          ),
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _vm.postsResponse.current_page < _vm.postsResponse.last_page
-                      ? _c("li", { staticClass: "page-item" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "page-link",
-                              attrs: { href: "#", "aria-label": "Next" },
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.getAllPosts(
-                                    _vm.postsResponse.current_page + 1
-                                  )
-                                },
-                              },
-                            },
-                            [
-                              _c("span", { attrs: { "aria-hidden": "true" } }, [
-                                _vm._v("»"),
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "visually-hidden" }, [
-                                _vm._v("Next"),
-                              ]),
-                            ]
-                          ),
-                        ])
-                      : _vm._e(),
-                  ],
-                  2
-                ),
+                              [
+                                _c(
+                                  "span",
+                                  { attrs: { "aria-hidden": "true" } },
+                                  [_vm._v("»")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "visually-hidden" }, [
+                                  _vm._v("Next"),
+                                ]),
+                              ]
+                            ),
+                          ])
+                        : _vm._e(),
+                    ],
+                    2
+                  ),
+                ]),
               ]),
             ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("aside", { staticClass: "bg-white p-2 col-12 col-md-3 col-lg-2" }, [
-          _c("div", { staticClass: "categories" }, [
-            _c("h6", [_vm._v("Categorie:")]),
-            _vm._v(" "),
-            _c(
-              "ul",
-              _vm._l(_vm.categories, function (category) {
-                return _c("li", { key: category.id }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(category.name) +
-                      "\n                    "
-                  ),
-                ])
-              }),
-              0
-            ),
-          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "tags" }, [
-            _c("h6", [_vm._v("Tags:")]),
-            _vm._v(" "),
-            _c(
-              "ul",
-              _vm._l(_vm.tags, function (tag) {
-                return _c("li", { key: tag.id }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(tag.name) +
-                      "\n                    "
-                  ),
-                ])
-              }),
-              0
-            ),
-          ]),
+          _c(
+            "aside",
+            { staticClass: "bg-white p-2 col-12 col-md-3 col-lg-2" },
+            [
+              _c("div", { staticClass: "categories" }, [
+                _c("h6", [_vm._v("Categorie:")]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  _vm._l(_vm.categories, function (category) {
+                    return _c("li", { key: category.id }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(category.name) +
+                          "\n                    "
+                      ),
+                    ])
+                  }),
+                  0
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "tags" }, [
+                _c("h6", [_vm._v("Tags:")]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  _vm._l(_vm.tags, function (tag) {
+                    return _c("li", { key: tag.id }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(tag.name) +
+                          "\n                    "
+                      ),
+                    ])
+                  }),
+                  0
+                ),
+              ]),
+            ]
+          ),
         ]),
       ]),
-    ]),
-  ])
+      _vm._v(" "),
+      _c("router-view"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53624,6 +53946,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Post.vue":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/Post.vue ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Post.vue?vue&type=template&id=9704806e& */ "./resources/js/Pages/Post.vue?vue&type=template&id=9704806e&");
+/* harmony import */ var _Post_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Post.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Post.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Post_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Post.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Post.vue?vue&type=script&lang=js&":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Post.vue?vue&type=script&lang=js& ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Post_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Post.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Post.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Post_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Post.vue?vue&type=template&id=9704806e&":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/Post.vue?vue&type=template&id=9704806e& ***!
+  \********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Post.vue?vue&type=template&id=9704806e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/Post.vue?vue&type=template&id=9704806e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Post_vue_vue_type_template_id_9704806e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Posts.vue":
 /*!**************************************!*\
   !*** ./resources/js/Pages/Posts.vue ***!
@@ -53790,12 +54181,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Home */ "./resources/js/Pages/Home.vue");
 /* harmony import */ var _Pages_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/About */ "./resources/js/Pages/About.vue");
 /* harmony import */ var _Pages_Posts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Posts */ "./resources/js/Pages/Posts.vue");
+/* harmony import */ var _Pages_Post__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/Post */ "./resources/js/Pages/Post.vue");
 // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
 // and then call `Vue.use(VueRouter)`.
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // 1. Define route components.
 // These can be imported from other files
+
 
 
 
@@ -53817,6 +54210,10 @@ var routes = [{
   path: '/posts',
   name: 'posts',
   component: _Pages_Posts__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/posts/:slug',
+  name: 'post',
+  component: _Pages_Post__WEBPACK_IMPORTED_MODULE_5__["default"]
 }]; // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
 // keep it simple for now.
