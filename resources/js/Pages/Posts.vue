@@ -3,13 +3,13 @@
         <h1>Posts:</h1>
         <div class="container-fluid">
          <div class="row">
-            <main class="col-12 col-md-9 col-lg-10">
+            <main class="col-12 col-md-9 col-lg-10 bg-secondary rounded-right">
                 <section class="posts py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                     <div class="col p-3" v-for="post in postsResponse.data" :key="post.id">
                         <div class="product card">
-                            <img :src="'storage/' + post.img" :alt="post.title">
+                            <img class="img-fluid rounded-top" :src="'storage/' + post.img" :alt="post.title">
                             <div class="card-body">
                                 <h3>{{post.title}}</h3>
                                 <p v-if="post.content" >{{trimText(post.content)}}</p>
@@ -54,8 +54,8 @@
             </div>
                 </section>
             </main>
-            <aside class="bg-white p-2 col-12 col-md-3 col-lg-2">
-                <div class="categories">
+            <aside class="bg-dark p-2 col-12 col-md-3 col-lg-2 rounded-left">
+                <div class="categories bg-secondary rounded p-1 text-white">
                      <h6>Categorie:</h6>
                     <ul>
                         <li v-for="category in categories" :key="category.id">
@@ -63,7 +63,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tags">
+                <div class="tags bg-secondary rounded mt-2 p-1 text-white">
                     <h6>Tags:</h6>
                     <ul>
                         <li v-for="tag in tags" :key="tag.id">
@@ -142,3 +142,12 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .card {
+        img {
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+</style>
