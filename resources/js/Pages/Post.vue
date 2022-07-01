@@ -34,8 +34,13 @@ export default {
             axios
                 .get('/api/posts/' + this.$route.params.slug)
                 .then((response => {
-                    this.post = response.data;
-                    this.loading = false;
+                    if(response.data.status_code === 404) {
+                        this.$router.push({name: 'not-found'});
+                    } else {
+                        this.post = response.data;
+                        this.loading = false;
+                    }
+                    
                 }))
                 .catch(e => {
                     console.log(e);

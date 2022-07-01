@@ -2073,8 +2073,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/posts/' + this.$route.params.slug).then(function (response) {
-        _this.post = response.data;
-        _this.loading = false;
+        if (response.data.status_code === 404) {
+          _this.$router.push({
+            name: 'not-found'
+          });
+        } else {
+          _this.post = response.data;
+          _this.loading = false;
+        }
       })["catch"](function (e) {
         console.log(e);
       });
