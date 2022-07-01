@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('contact-form', 'MessageController@index')->name('contact.form.index');
+Route::post('contact-form', 'MessageController@store');
 
 Auth::routes();
 
@@ -28,6 +29,8 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
             Route::resource('tags', 'TagController')->parameters([
                 'tags' => 'tag:slug',
             ])->except(['show', 'create', 'edit']); 
+
+            Route::resource('messages', 'MessageController');
 });
 
 

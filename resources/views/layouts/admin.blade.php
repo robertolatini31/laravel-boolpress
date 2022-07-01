@@ -49,26 +49,27 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="{{route('admin.home')}}">
-                            <span data-feather="home"></span>
                             Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.posts.index')}}">
-                            <span data-feather="file"></span>
                             Posts
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.categories.index')}}">
-                            <span data-feather="file"></span>
                             Categories
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.tags.index')}}">
-                            <span data-feather="file"></span>
+                            <a class="nav-link" href="{{route('admin.tags.index')}}">     
                             Tags
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.messages.index')}}">
+                            Messages
                             </a>
                         </li>
                     </ul>
