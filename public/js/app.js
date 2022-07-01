@@ -2401,6 +2401,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         routeName: 'posts',
         routeText: 'Posts'
+      }, {
+        routeName: 'contacts',
+        routeText: 'Contacts'
       }]
     };
   }
@@ -38740,110 +38743,119 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "page container" },
+    { staticClass: "page container py-5" },
     [
-      _c("VueForm", { attrs: { method: "post", action: "/contact-form" } }, [
-        _c("div", { staticClass: "mb-3" }, [
-          _c(
-            "label",
-            { staticClass: "form-label", attrs: { for: "full_name" } },
-            [_vm._v("Full Name")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              name: "full_name",
-              id: "full_name",
-              "aria-describedby": "fullNameHelper",
-              placeholder: "Mario Rossi",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "small",
-            {
-              staticClass: "form-text text-muted",
-              attrs: { id: "fullNameHelper" },
-            },
-            [_vm._v("inserisci il tuo nome e cognome")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "form-label", attrs: { for: "email" } }, [
-            _vm._v("Email"),
+      _c(
+        "VueForm",
+        {
+          staticClass: "bg-dark text-white rounded px-4 pb-4",
+          attrs: { method: "post", action: "/contact-form" },
+        },
+        [
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "full_name" } },
+              [_vm._v("Full Name")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "full_name",
+                id: "full_name",
+                "aria-describedby": "fullNameHelper",
+                placeholder: "Mario Rossi",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "fullNameHelper" },
+              },
+              [_vm._v("inserisci il tuo nome e cognome")]
+            ),
           ]),
           _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              name: "email",
-              id: "email",
-              "aria-describedby": "emailHelper",
-              placeholder: "mariorossi@example.com",
-            },
-          }),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "email" } },
+              [_vm._v("Email")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                name: "email",
+                id: "email",
+                "aria-describedby": "emailHelper",
+                placeholder: "mariorossi@example.com",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "emailHelper" },
+              },
+              [_vm._v("inserisci la tua email")]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "subject" } },
+              [_vm._v("Subject")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "subject",
+                id: "subject",
+                "aria-describedby": "textHelper",
+                placeholder: "mariorossi@example.com",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "textHelper" },
+              },
+              [_vm._v("inserisci l'oggetto dell' email")]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "message" } },
+              [_vm._v("Message")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: { name: "message", id: "message", rows: "5" },
+            }),
+          ]),
           _vm._v(" "),
           _c(
-            "small",
-            {
-              staticClass: "form-text text-muted",
-              attrs: { id: "emailHelper" },
-            },
-            [_vm._v("inserisci la tua email")]
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Invia")]
           ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c(
-            "label",
-            { staticClass: "form-label", attrs: { for: "subject" } },
-            [_vm._v("Subject")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              name: "subject",
-              id: "subject",
-              "aria-describedby": "textHelper",
-              placeholder: "mariorossi@example.com",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "small",
-            {
-              staticClass: "form-text text-muted",
-              attrs: { id: "textHelper" },
-            },
-            [_vm._v("inserisci l'oggetto dell' email")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c(
-            "label",
-            { staticClass: "form-label", attrs: { for: "message" } },
-            [_vm._v("Message")]
-          ),
-          _vm._v(" "),
-          _c("textarea", {
-            staticClass: "form-control",
-            attrs: { name: "message", id: "message", rows: "5" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Invia")]
-        ),
-      ]),
+        ]
+      ),
     ],
     1
   )

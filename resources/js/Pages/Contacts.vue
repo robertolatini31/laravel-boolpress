@@ -1,7 +1,7 @@
 <template>
-    <div class="page container">
+    <div class="page container py-5">
 
-        <VueForm method="post" action="/contact-form">
+        <VueForm method="post" action="/contact-form" class="bg-dark text-white rounded px-4 pb-4">
         <div class="mb-3">
           <label for="full_name" class="form-label">Full Name</label>
           <input type="text" class="form-control" name="full_name" id="full_name" aria-describedby="fullNameHelper" placeholder="Mario Rossi">

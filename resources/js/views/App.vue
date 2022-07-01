@@ -46,6 +46,10 @@ export default {
                 {
                     routeName: 'posts',
                     routeText: 'Posts'
+                },
+                {
+                    routeName: 'contacts',
+                    routeText: 'Contacts'
                 }
             ]
         }
