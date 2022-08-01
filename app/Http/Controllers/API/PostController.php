@@ -21,6 +21,7 @@ class PostController extends Controller
                 'status_code' => 404,
                 'status_text' => 'not found'
             ]);
+            
         }
        
     }
