@@ -9,6 +9,7 @@
         <div class="col">
             <form action="{{route('admin.categories.store')}}" method="post" class="d-flex">
                 @csrf
+                
                 <div class="mb-2 mr-3">
                     <label for="name" class="form-label">Nome</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="nome categoria" aria-describedby="helperName">
